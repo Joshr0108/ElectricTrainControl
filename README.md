@@ -1,7 +1,7 @@
 # Electric Train Control
 
 ## Project Summary
-Taking a classic, battery operated, train set actuated using a small PMDC motor, the task is to add functionalty with numerous sensing and motor driver sub-systems. This is a group project in which my roal was testing all of the circuitry and writing of code.
+Taking a classic battery operated train set, actuated using a small PMDC motor, the task is to add functionalty with numerous sensing and motor driver sub-systems. This is a group project in which my role was testing all of the circuitry and writing of code.
 
 
 ## Features
