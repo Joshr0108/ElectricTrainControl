@@ -1,0 +1,54 @@
+/*
+This is the code that would be used to measure the hull sensor
+There was not enough time to integrate this into the project, however, it was operational on it's own
+*/
+
+// signal input from hall sensor 
+int hall_sens_signal = 3; 
+
+// variables declaration values to calculate the angular speed 
+volatile unsigned long finalTime = 0;    // Stores the time of the last pulse 
+volatile unsigned long pulseInterval = 0;    // Stores the time interval between pulses 
+float angular_v = 0; 
+
+ 
+void setup() { 
+    Serial.begin(9600); 
+    attachInterrupt(digitalPinToInterrupt(hall_sens_signal), hallSensorISR, RISING); 
+    pinMode(hall_sens_signal,INPUT); 
+} 
+
+ 
+void loop() {
+   /* Temporarily disable interrupts to read pulseInterval atomically (4 bytes data type are being updated in ISR. To maintain 
+   atomicity, interval and final time won't be retrieved properly from microcontroller as it has 8 bits (1 byte) atomic operation) */
+    noInterrupts(); 
+
+    // Copy the value to a local variables to prevent access to the ISR variables during the loop 
+    unsigned long interval = pulseInterval;   
+    unsigned long lastPulseTime = finalTime; 
+    interrupts(); 
+
+    // Calculate speed based on pulseInterval in the main loop 
+    if (interval > 0 && digitalRead(hall_sens_signal) == HIGH) { 
+        angular_v = 2*PI*(1/(interval * 1e-6)); 
+        Serial.println("angular speed:" ); 
+        Serial.println(angular_v); 
+    } 
+
+    // if 1 second passes after the last HIGH signal from the hall sensor is received, the motor is assumed to have stopped  
+     else if (micros() - lastPulseTime > 1e6) {   
+        angular_v = 0; 
+        Serial.println("Angular speed: 0 (Motor stopped)"); 
+    } 
+      
+} 
+
+
+
+// ISR function used in the interrupt. It runs every time the hall sensor signal goes from LOW to HIGH.  
+void hallSensorISR() { 
+    unsigned long currentTime = micros();       
+    pulseInterval = currentTime - finalTime;  
+    finalTime = currentTime;                 
+} 
