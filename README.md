@@ -11,9 +11,19 @@ Taking a classic battery operated train set, actuated using a small PMDC motor, 
 - Design a colour recognition system to stop on red and go on green
 - Use PID control to apply a velocity motion profile
 
+#### System Block Diagram
 ![image](https://github.com/user-attachments/assets/90e1f808-a9e2-4f66-9770-4674a90d2b69)
 
-![image](https://github.com/user-attachments/assets/c3f06525-cac1-4fd4-9110-85d6069f4ae8)
+#### Code Flow Diagram
+![image](https://github.com/user-attachments/assets/936692e3-7f13-4b02-a126-6fdaf6b287fe)
+
+#### Train Circuit Diagram
+![image](https://github.com/user-attachments/assets/43b4001f-7a8e-4b5f-9d97-d9d27357d5a9)
+
+#### Joystick Module
+![image](https://github.com/user-attachments/assets/0a89fb75-df8d-4bad-a0a4-a5eb086b3b58)
+
+
 
 
 ## Usage
