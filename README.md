@@ -13,6 +13,8 @@ Taking a classic battery operated train set, actuated using a small PMDC motor, 
 
 ![image](https://github.com/user-attachments/assets/90e1f808-a9e2-4f66-9770-4674a90d2b69)
 
+![image](https://github.com/user-attachments/assets/c3f06525-cac1-4fd4-9110-85d6069f4ae8)
+
 
 ## Usage
 #### Ardunio Nano Every
@@ -26,6 +28,8 @@ The code is broken down to
 - Distance Sensor
 - Motor Control
 - Reciever
+
+
 The seperation of each code allows for easy debugging and clean code, each segment refers to one of the sensors, the control of the motor or reciveing of wireless signal and is then all called in the main file of code.
 
 
